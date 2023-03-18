@@ -26,6 +26,11 @@ export class HomePage {
       name:"Zucaritas 500g",
       price:100,
       type: "Abarrotes"
+    },
+    {
+      name:"Pepsi 600ml",
+      price:100,
+      type: "Abarrotes"
     }
 ];
   constructor() {}
@@ -42,6 +47,9 @@ export class HomePage {
       case "Mascotas":
         color = "warning";
         break;  
+      case "Pepsi":
+        color = "secondary"
+        break;
       default:
         break;
     }
