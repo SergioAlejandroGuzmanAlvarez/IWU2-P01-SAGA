@@ -6,50 +6,41 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  public products = [
-    {
-      name:"Coca Cola 600ml",
-      price:20,
-      type: "Abarrotes"
-    },
-    {
-      name:"Jabon Zote",
-      price:30,
-      type: "Limpieza"
-    },
-    {
-      name:"Croquetes 50kg",
-      price:400,
-      type: "Mascotas"
-    },
-    {
-      name:"Zucaritas 500g",
-      price:100,
-      type: "Abarrotes"
-    },
-    {
-      name:"Pepsi 600ml",
-      price:100,
-      type: "Abarrotes"
+  public products: { name: string, price: number, type: string }[] = [
+    { name:"Coca Cola 600ml",price:20,type:"abarrotes" },
+    { name: 'Pepsi 600ml', price: 20, type: 'abarrotes' },
+    { name: 'Queso cotija', price: 30, type: 'abarrotes' },
+    { name: 'Croquetas Pedigree', price: 40, type: 'mascotas' },
+    { name: 'Whiskas', price: 20, type: 'mascotas' },
+    { name: 'Alpiste', price: 13, type: 'mascotas' },
+    { name: 'Fabuloso', price: 25, type: 'limpieza' },
+    { name: 'Cloro', price: 25, type: 'limpieza' },
+    { name: 'Pinol', price: 20, type: 'limpieza' },
+  ];
+  public filteredProducts: { name: string, price: number, type: string }[];
+  constructor() {
+    this.filteredProducts = this.products;
+  }
+  filterProducts(type: string) {
+    if (type === 'all') {
+      this.filteredProducts = this.products;
+    } else {
+      this.filteredProducts = this.products.filter(product => product.type === type);
     }
-];
-  constructor() {}
+  }
   getColor(type: String) : string{
     let color = "";
 
     switch(type){
-      case "Abarrotes":
+      case "abarrotes":
         color = "primary";
         break;
-      case "Limpieza":
+      case "limpieza":
         color = "success";
         break;
-      case "Mascotas":
+      case "mascotas":
         color = "warning";
         break;  
-      case "Pepsi":
-        color = "secondary"
-        break;
       default:
         break;
     }
